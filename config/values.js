@@ -111,7 +111,7 @@ const values = {
   includeSourceMapsForOptimisedClientBundle: false,
 
   // These extensions are tried when resolving src files for our bundles..
-  bundleSrcTypes: ['js', 'jsx', 'json'],
+  bundleSrcTypes: ['ts', 'tsx', 'js', 'jsx', 'json'],
 
   // What should we name the json output file that webpack generates
   // containing details of all output files for a bundle?
