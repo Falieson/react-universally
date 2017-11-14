@@ -1,10 +1,13 @@
+/* eslint-disable max-lines */
+
+import path from 'path';
 import appRootDir from 'app-root-dir';
 import AssetsPlugin from 'assets-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import nodeExternals from 'webpack-node-externals';
-import path from 'path';
 import webpack from 'webpack';
 import WebpackMd5Hash from 'webpack-md5-hash';
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 
 import { happyPackPlugin, log } from '../utils';
 import { ifElse } from '../../shared/utils/logic';
@@ -350,6 +353,23 @@ export default function webpackConfigFactory(buildOptions) {
       // Therefore we employ HappyPack to do threaded execution of our
       // "heavy-weight" loaders.
 
+      // TYPESCRIPT
+      happyPackPlugin({
+        name: 'typescript',
+        loaders: [
+          {
+            path: 'ts-loader',
+            query: { happyPackMode: true },
+          },
+        ],
+        include: removeNil([
+          ...bundleConfig.srcPaths.map(srcPath => path.resolve(appRootDir.get(), srcPath)),
+          ifProdClient(path.resolve(appRootDir.get(), 'shared/HTML')),
+        ]),
+      }),
+
+      new ForkTsCheckerWebpackPlugin({ checkSyntacticErrors: true }),
+
       // HappyPack 'javascript' instance.
       happyPackPlugin({
         name: 'happypack-javascript',
@@ -454,6 +474,17 @@ export default function webpackConfigFactory(buildOptions) {
                 ...bundleConfig.srcPaths.map(srcPath => path.resolve(appRootDir.get(), srcPath)),
                 ifProdClient(path.resolve(appRootDir.get(), 'src/html')),
               ]),
+            },
+
+            // TYPESCRIPT
+            {
+              test: /\.tsx?$/,
+              use: [
+                'happypack/loader?id=typescript',
+                {
+                  loader: 'ts-loader',
+                },
+              ],
             },
 
             // CSS

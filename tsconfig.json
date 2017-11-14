@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "forceConsistentCasingInFileNames": true,
+    "jsx": "react",
+    "lib": ["es6", "dom"],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "newLine": "LF",
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "outDir": "build/dist",
+    "preserveConstEnums": true,
+    "removeComments": true,
+    "sourceMap": true,    
+    "strictNullChecks": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "target": "es5"
+  },
+  "exclude": [
+    ".happypack",
+    "build",
+    "client",
+    "config",
+    "internal",
+    "licenses",
+    "node_modules",
+    "public",
+    "server",
+    "shared/utils/",
+    "./package-scripts.js"
+  ]
+}
