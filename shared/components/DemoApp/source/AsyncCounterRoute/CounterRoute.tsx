@@ -1,15 +1,15 @@
 /* eslint-disable react/no-unescaped-entities */
-import React, { Component } from 'react';
+import * as React from 'react'
 
-class CounterRoute extends Component {
-  constructor(props) {
-    super(props);
-    this.incrementCounter = this.incrementCounter.bind(this);
-    this.state = { counter: 0 };
+class CounterRoute extends React.Component<{}, {counter: number}> {
+  constructor(props: {}) {
+    super(props)
+    this.incrementCounter = this.incrementCounter.bind(this)
+    this.state = { counter: 0 }
   }
 
   incrementCounter() {
-    this.setState({ counter: this.state.counter + 1 });
+    this.setState({ counter: this.state.counter + 1 })
   }
 
   render() {
@@ -29,8 +29,8 @@ class CounterRoute extends Component {
           <button onClick={this.incrementCounter}>Increment</button>
         </p>
       </div>
-    );
+    )
   }
 }
 
-export default CounterRoute;
+export default CounterRoute

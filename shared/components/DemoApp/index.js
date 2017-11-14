@@ -1,19 +1,13 @@
-import 'normalize.css/normalize.css'
+import 'normalize.css/normalize.css';
 
-import * as React from 'react'
-import Helmet from 'react-helmet'
-import { Route, Switch } from 'react-router-dom'
+import * as React from 'react';
+import Helmet from 'react-helmet';
 
-import config from '../../../config'
+import config from '../../../config/index';
 
-import './globals.css'
+import './globals.css';
 
-import Error404 from './Error404'
-import Header from './Header'
-
-import AsyncAboutRoute from './AsyncAboutRoute'
-import AsyncCounterRoute from './AsyncCounterRoute'
-import AsyncHomeRoute from './AsyncHomeRoute'
+import MainApp from './build/App';
 
 function App() {
   return (
@@ -37,15 +31,51 @@ function App() {
           http://realfavicongenerator.net/
           http://www.favicomatic.com/
         */}
-        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/favicons/apple-touch-icon-152x152.png" />
-        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/favicons/apple-touch-icon-144x144.png" />
-        <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/favicons/apple-touch-icon-120x120.png" />
-        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/favicons/apple-touch-icon-114x114.png" />
-        <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/favicons/apple-touch-icon-76x76.png" />
-        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/favicons/apple-touch-icon-72x72.png" />
-        <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/favicons/apple-touch-icon-57x57.png" />
-        <link rel="apple-touch-icon-precomposed" sizes="60x60" href="/favicons/apple-touch-icon-60x60.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon-180x180.png" />
+        <link
+          rel="apple-touch-icon-precomposed"
+          sizes="152x152"
+          href="/favicons/apple-touch-icon-152x152.png"
+        />
+        <link
+          rel="apple-touch-icon-precomposed"
+          sizes="144x144"
+          href="/favicons/apple-touch-icon-144x144.png"
+        />
+        <link
+          rel="apple-touch-icon-precomposed"
+          sizes="120x120"
+          href="/favicons/apple-touch-icon-120x120.png"
+        />
+        <link
+          rel="apple-touch-icon-precomposed"
+          sizes="114x114"
+          href="/favicons/apple-touch-icon-114x114.png"
+        />
+        <link
+          rel="apple-touch-icon-precomposed"
+          sizes="76x76"
+          href="/favicons/apple-touch-icon-76x76.png"
+        />
+        <link
+          rel="apple-touch-icon-precomposed"
+          sizes="72x72"
+          href="/favicons/apple-touch-icon-72x72.png"
+        />
+        <link
+          rel="apple-touch-icon-precomposed"
+          sizes="57x57"
+          href="/favicons/apple-touch-icon-57x57.png"
+        />
+        <link
+          rel="apple-touch-icon-precomposed"
+          sizes="60x60"
+          href="/favicons/apple-touch-icon-60x60.png"
+        />
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/favicons/apple-touch-icon-180x180.png"
+        />
         <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#00a9d9" />
         <link rel="icon" type="image/png" href="/favicons/favicon-196x196.png" sizes="196x196" />
         <link rel="icon" type="image/png" href="/favicons/favicon-128.png" sizes="128x128" />
@@ -65,20 +95,18 @@ function App() {
           this and the related items from the Content Security Policy in the
           global config if you have no intention of using milligram.
         */}
-        <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic" />
-        <link rel="stylesheet" href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css" />
+        <link
+          rel="stylesheet"
+          href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic"
+        />
+        <link
+          rel="stylesheet"
+          href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css"
+        />
       </Helmet>
-      <Header />
-      <div style={{ paddingTop: '2rem', paddingBottom: '2rem' }}>
-        <Switch>
-          <Route exact path="/" component={AsyncHomeRoute} />
-          <Route path="/counter" component={AsyncCounterRoute} />
-          <Route path="/about" component={AsyncAboutRoute} />
-          <Route component={Error404} />
-        </Switch>
-      </div>
+      <MainApp />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
