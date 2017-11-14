@@ -1,5 +1,5 @@
-import React from 'react';
-import Helmet from 'react-helmet';
+import * as React from 'react'
+import Helmet from 'react-helmet'
 
 function AboutRoute() {
   return (
@@ -18,7 +18,7 @@ function AboutRoute() {
         page.
       </p>
     </div>
-  );
+  )
 }
 
-export default AboutRoute;
+export default AboutRoute

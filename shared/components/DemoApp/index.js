@@ -1,22 +1,15 @@
 import 'normalize.css/normalize.css';
 
-import React from 'react';
-import Switch from 'react-router-dom/Switch';
-import Route from 'react-router-dom/Route';
+import * as React from 'react';
 import Helmet from 'react-helmet';
 
-import config from '../../../config';
+import config from '../../../config/index';
 
 import './globals.css';
 
-import Error404 from './Error404';
-import Header from './Header';
+import MainApp from './build/App';
 
-import AsyncHomeRoute from './AsyncHomeRoute';
-import AsyncCounterRoute from './AsyncCounterRoute';
-import AsyncAboutRoute from './AsyncAboutRoute';
-
-function DemoApp() {
+function App() {
   return (
     <div style={{ padding: '2rem' }}>
       <Helmet>
@@ -29,9 +22,7 @@ function DemoApp() {
         <meta name="msapplication-TileColor" content="#2b2b2b" />
         <meta name="msapplication-TileImage" content="/favicons/mstile-144x144.png" />
         <meta name="theme-color" content="#2b2b2b" />
-        <title>
-          {config('htmlPage.defaultTitle')}
-        </title>
+        <title>{config('htmlPage.defaultTitle')}</title>
         {/*
           A great reference for favicons:
           https://github.com/audreyr/favicon-cheat-sheet
@@ -113,17 +104,9 @@ function DemoApp() {
           href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css"
         />
       </Helmet>
-      <Header />
-      <div style={{ paddingTop: '2rem', paddingBottom: '2rem' }}>
-        <Switch>
-          <Route exact path="/" component={AsyncHomeRoute} />
-          <Route path="/counter" component={AsyncCounterRoute} />
-          <Route path="/about" component={AsyncAboutRoute} />
-          <Route component={Error404} />
-        </Switch>
-      </div>
+      <MainApp />
     </div>
   );
 }
 
-export default DemoApp;
+export default App;

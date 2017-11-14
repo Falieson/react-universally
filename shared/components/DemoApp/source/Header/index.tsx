@@ -1,6 +1,6 @@
-import React from 'react';
-import Logo from './Logo';
-import Menu from './Menu';
+import * as React from 'react'
+import Logo from './Logo'
+import Menu from './Menu'
 
 function Header() {
   return (
@@ -12,7 +12,7 @@ function Header() {
       </strong>
       <Menu />
     </div>
-  );
+  )
 }
 
-export default Header;
+export default Header

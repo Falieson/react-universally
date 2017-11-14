@@ -1,7 +1,5 @@
-import React from 'react';
-import Helmet from 'react-helmet';
-
-import config from '../../../../config';
+import * as React from 'react'
+import Helmet from 'react-helmet'
 
 function HomeRoute() {
   return (
@@ -10,7 +8,7 @@ function HomeRoute() {
         <title>Home</title>
       </Helmet>
 
-      <h2>{config('welcomeMessage')}</h2>
+      <h2>{'welcomeMessage'}</h2>
 
       <p>
         This starter kit contains all the build tooling and configuration you
@@ -19,7 +17,7 @@ function HomeRoute() {
         decisions (Redux/Mobx etc).
       </p>
     </div>
-  );
+  )
 }
 
-export default HomeRoute;
+export default HomeRoute

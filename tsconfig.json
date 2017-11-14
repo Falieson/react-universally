@@ -1,0 +1,24 @@
+{
+	"compilerOptions": {
+		"module": "commonjs",
+		"target": "es6",
+		"jsx": "react",
+		"noImplicitAny": false,
+		"experimentalDecorators": true,
+		"sourceMap": true,
+		"baseUrl": "./",
+		"allowJs": true,
+		"paths": {
+			"*": [
+				"shared/"
+			]
+		},
+		"rootDir": "shared/components/DemoApp/source",
+		"outDir": "shared/components/DemoApp/build"
+	},
+	"compileOnSave": false,
+	"include": [
+		"shared/**/*.ts",
+		"shared/**/*.tsx"
+	]
+}
