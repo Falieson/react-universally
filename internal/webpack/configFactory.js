@@ -476,6 +476,17 @@ export default function webpackConfigFactory(buildOptions) {
               ]),
             },
 
+            // TYPESCRIPT
+            {
+              test: /\.tsx?$/,
+              use: [
+                'happypack/loader?id=typescript',
+                {
+                  loader: 'ts-loader',
+                },
+              ],
+            },
+
             // CSS
             // This is bound to our server/client bundles as we only expect to be
             // serving the client bundle as a Single Page Application through the

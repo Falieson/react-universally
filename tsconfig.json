@@ -14,12 +14,14 @@
     "outDir": "build/dist",
     "preserveConstEnums": true,
     "removeComments": true,
-    "rootDir": "shared",
     "sourceMap": true,    
     "strictNullChecks": true,
     "suppressImplicitAnyIndexErrors": true,
     "target": "es5"
   },
+  "include": [
+    "shared/components/DemoApp/index.tsx"
+  ],
   "exclude": [
     ".happypack",
     "build",
