@@ -19,9 +19,6 @@
     "suppressImplicitAnyIndexErrors": true,
     "target": "es5"
   },
-  "include": [
-    "shared/components/DemoApp/index.tsx"
-  ],
   "exclude": [
     ".happypack",
     "build",
