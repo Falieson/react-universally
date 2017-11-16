@@ -1,11 +1,11 @@
 ### Feature Branch
 
-Note: This is a feature branch of `react-universally`. 
+Note: This is a feature branch of `falieson/react-universally--typescript` for redux.
 
 ---
 
 <p align='center'>
-  <h1 align='center'>React, Universally</h1>
+  <h1 align='center'>React, Universally -- TYPESCRIPT</h1>
   <p align='center'><img width='150' src='https://raw.githubusercontent.com/ctrlplusb/assets/master/logos/react-universally.png' /></p>
   <p align='center'>A starter kit for universal react applications.</p>
 </p>
