@@ -5,6 +5,7 @@ import nodeExternals from 'webpack-node-externals';
 import path from 'path';
 import webpack from 'webpack';
 import WebpackMd5Hash from 'webpack-md5-hash';
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 
 import { happyPackPlugin } from '../utils';
 import { ifElse } from '../../shared/utils/logic';
@@ -413,6 +414,23 @@ export default function webpackConfigFactory(buildOptions) {
         ],
       }),
 
+      // TYPESCRIPT
+      happyPackPlugin({
+        name: 'typescript',
+        loaders: [
+          {
+            path: 'ts-loader',
+            query: { happyPackMode: true },
+          },
+        ],
+        include: removeNil([
+          ...bundleConfig.srcPaths.map(srcPath => path.resolve(appRootDir.get(), srcPath)),
+          ifProdClient(path.resolve(appRootDir.get(), 'shared/HTML')),
+        ]),
+      }),
+
+      new ForkTsCheckerWebpackPlugin({ checkSyntacticErrors: true }),
+
       // HappyPack 'css' instance for development client.
       ifDevClient(() =>
         happyPackPlugin({
@@ -452,6 +470,17 @@ export default function webpackConfigFactory(buildOptions) {
                 ...bundleConfig.srcPaths.map(srcPath => path.resolve(appRootDir.get(), srcPath)),
                 ifProdClient(path.resolve(appRootDir.get(), 'src/html')),
               ]),
+            },
+
+            // TYPESCRIPT
+            {
+              test: /\.tsx?$/,
+              use: [
+                'happypack/loader?id=typescript',
+                {
+                  loader: 'ts-loader',
+                },
+              ],
             },
 
             // CSS

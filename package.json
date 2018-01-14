@@ -3,9 +3,6 @@
   "version": "13.0.0",
   "description": "A starter kit for universal react applications.",
   "main": "build/server/index.js",
-  "engines": {
-    "node": ">=6"
-  },
   "scripts": {
     "analyze:client": "babel-node internal/scripts/analyze --client",
     "analyze:server": "babel-node internal/scripts/analyze --server",
@@ -14,6 +11,12 @@
     "clean": "cross-env babel-node internal/scripts/clean",
     "deploy": "babel-node internal/scripts/deploy",
     "develop": "cross-env DEPLOYMENT=development babel-node internal/development",
+    "dev": "npm run develop",
+    "es": "eslint shared",
+    "es:fix": "eslint --fix shared",
+    "es:all": "eslint --fix client server shared config internal",
+    "ts": "tslint -p ./tsconfig.json './shared/**/*.{ts,tsx}'",
+    "ts:fix": "tslint --fix -c ./tslint.json -p ./tsconfig.json './shared/**/*.{ts,tsx}'",
     "lint": "eslint client server shared config internal",
     "precommit": "lint-staged",
     "preinstall": "node internal/scripts/preinstall",
@@ -22,41 +25,6 @@
     "test": "jest",
     "test:coverage": "jest --coverage"
   },
-  "lint-staged": {
-    "*.js": [
-      "prettier-eslint --write",
-      "git add"
-    ]
-  },
-  "jest": {
-    "collectCoverageFrom": [
-      "src/**/*.{js,jsx}"
-    ],
-    "snapshotSerializers": [
-      "<rootDir>/node_modules/enzyme-to-json/serializer"
-    ],
-    "testPathIgnorePatterns": [
-      "<rootDir>/(build|internal|node_modules|public)/"
-    ]
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ctrlplusb/react-universally.git"
-  },
-  "keywords": [
-    "react",
-    "boilerplate",
-    "starter kit",
-    "universal",
-    "javascript",
-    "express",
-    "webpack"
-  ],
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/ctrlplusb/react-universally/issues"
-  },
-  "homepage": "https://github.com/ctrlplusb/react-universally#readme",
   "dependencies": {
     "apollo-client": "1.9.1",
     "app-root-dir": "1.0.2",
@@ -93,6 +61,15 @@
     "uuid": "3.1.0"
   },
   "devDependencies": {
+    "@types/graphql": "^0.11.8",
+    "@types/history": "4.6.0",
+    "@types/jest": "^21.1.5",
+    "@types/node": "^8.0.47",
+    "@types/react": "^16.0.18",
+    "@types/react-dom": "^16.0.2",
+    "@types/react-helmet": "5.0.3",
+    "@types/react-redux": "^5.0.12",
+    "@types/react-router-dom": "^4.2.0",
     "assets-webpack-plugin": "3.5.1",
     "babel-cli": "6.24.1",
     "babel-core": "6.25.0",
@@ -119,6 +96,7 @@
     "eslint-plugin-react": "7.2.0",
     "extract-text-webpack-plugin": "3.0.0",
     "file-loader": "0.11.2",
+    "fork-ts-checker-webpack-plugin": "0.2.8",
     "glob": "7.1.2",
     "happypack": "4.0.0-beta.2",
     "html-webpack-plugin": "2.30.1",
@@ -138,11 +116,55 @@
     "semver": "^5.4.1",
     "source-map-support": "0.4.15",
     "style-loader": "0.18.2",
+    "ts-jest": "^20.0.7",
+    "ts-loader": "^2.3.7",
+    "tslint": "^5.7.0",
+    "tslint-loader": "^3.5.3",
+    "tslint-react": "^3.2.0",
+    "typescript": "^2.6.1",
     "webpack": "3.5.3",
     "webpack-bundle-analyzer": "2.9.0",
     "webpack-dev-middleware": "1.12.0",
     "webpack-hot-middleware": "2.18.2",
     "webpack-md5-hash": "0.0.5",
     "webpack-node-externals": "1.6.0"
-  }
+  },
+  "engines": {
+    "node": ">=6"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier-eslint --write",
+      "git add"
+    ]
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx}"
+    ],
+    "snapshotSerializers": [
+      "<rootDir>/node_modules/enzyme-to-json/serializer"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>/(build|internal|node_modules|public)/"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ctrlplusb/react-universally.git"
+  },
+  "keywords": [
+    "react",
+    "boilerplate",
+    "starter kit",
+    "universal",
+    "javascript",
+    "express",
+    "webpack"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ctrlplusb/react-universally/issues"
+  },
+  "homepage": "https://github.com/ctrlplusb/react-universally#readme"
 }
